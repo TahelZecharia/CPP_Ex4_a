@@ -11,13 +11,13 @@ namespace coup{
         public:
         
         // Contruuctor:
-        Captain(Game &game, string name);
+        Captain(Game &game, const std::string &name);
         
         // The func steal 2 coins from another player
-        void steal(Player &p);
+        void steal(Player &player);
 
         // The captain can prevent a theft.
-        void block(Player &p);
+        void block(Player &player);
 
         // Destructor:
         ~Captain();

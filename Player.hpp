@@ -13,18 +13,18 @@ namespace coup{
         protected:
 
         Game* _game;
-        string _name;
-        string _role;
+        std::string _name;
+        std::string _role;
         int _coins;
-        string _lastAction;
+        std::string _lastAction;
 
         public:
 
         // Contruuctor:
-        Player(Game &game, string name);
+        Player(Game &game, std::string const &name);
         
         // Contruuctor:
-        Player(Game &game, string name, string role);
+        Player(Game &game, std::string const &name, std::string const &role);
         
         // Take a coin from the coin stack:
         void income();
@@ -39,16 +39,19 @@ namespace coup{
         void role();
         
         // The method returns how many coins the player has:
-        int coins();
+        int coins() const;
 
         // The function throws an error if it is not the player's turn:
         void turnConfirm();
 
         // The function updates the game that the player's turn is over:
-        void endTurn(string action);
+        void endTurn(std::string action);
 
         // The function returns the player's name:
-        string getName();
+        std::string getName();
+
+        // The function adds coins to the player:
+        void addCoins(int num);
         
         // Destructor:
         ~Player();

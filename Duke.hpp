@@ -8,7 +8,7 @@ namespace coup{
         
         public: 
         // Contruuctor:
-        Duke(Game &game, string name);
+        Duke(Game &game, const std::string &name);
         
         // Can take a tax of three coins from the pot without any player being able to prevent it.
         void tax();

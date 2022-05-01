@@ -5,7 +5,7 @@ using namespace std;
 namespace coup{
 
     // Contruuctor:
-    Duke :: Duke(Game &game, string name) : 
+    Duke :: Duke(Game &game, const string &name) : 
             
             Player(game, name, "Duke"){
 
@@ -24,11 +24,11 @@ namespace coup{
     // The Duke can block double pay action. The blocked player returns the two coins to the pot.
     void Duke :: block(Player &player){
 
-        this->turnConfirm();
+        // this->turnConfirm();
 
-        /// to do ////
+        // /// to do ////
         
-        this->endTurn("block");
+        // this->endTurn("block");
     }
 
     // Destructor:

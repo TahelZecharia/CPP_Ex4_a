@@ -12,7 +12,7 @@ namespace coup{
         public:
 
         // Contruuctor:
-        Assassin(Game &game, string name);
+        Assassin(Game &game, const std::string &name);
         
         // Assassin can coup with only 3 coins (instead of 7):
         void coup(Player &player);

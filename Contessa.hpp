@@ -9,10 +9,10 @@ namespace coup{
     public:
 
     // Contruuctor:    
-    Contessa(Game &game, string name);
+    Contessa(Game &game, const std::string &name);
 
     // Can block the act of assassination  
-    void block(Player &p);
+    void block(Player &player);
     
     // Destructor:
     ~Contessa();

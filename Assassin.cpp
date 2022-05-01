@@ -5,7 +5,7 @@ using namespace std;
 namespace coup{
 
     // Contruuctor:
-    Assassin :: Assassin(Game &game, string name) : 
+    Assassin :: Assassin(Game &game, const string &name) : 
             
             Player(game, name, "Assassin"){
 

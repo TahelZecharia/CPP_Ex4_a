@@ -2,26 +2,24 @@
 
 using namespace std;
 
+const int SEVEN = 7;
+
 namespace coup{
 
     // Contruuctor:
-    Player:: Player(Game &game, string name){
+    Player:: Player(Game &game, string const &name)
+            
+            : _game(&game), _name(name), _role(""), _coins(0), _lastAction("") {
 
-        this->_game = &game;
-        this->_name = name;
-        this->_role = "";
-        this->_coins = 0;
-        this->_lastAction = "";
+        this->_game->addPlayer(name);
     }
 
     // Contruuctor:
-    Player:: Player(Game &game, string name, string role){
+    Player:: Player(Game &game, string const &name, string const &role)
+    
+            : _game(&game), _name(name), _role(role), _coins(0), _lastAction("") {
 
-        this->_game = &game;
-        this->_name = name;
-        this->_role = role;
-        this->_coins = 0;
-        this->_lastAction = "";
+        this->_game->addPlayer(name);
     }
         
     // Take a coin from the coin stack:
@@ -49,14 +47,14 @@ namespace coup{
 
         this->turnConfirm();
 
-        if (this->coins() < 7){
+        if (this->coins() < SEVEN){
 
             throw runtime_error("There are not enough coins to make a coup (7 coins)");
         }
 
         this->_game->removePlayer(player._name);
 
-        this->_coins -= 7;
+        this->_coins -= SEVEN;
 
         this->endTurn("coup");
     }
@@ -68,7 +66,7 @@ namespace coup{
     }
         
     // The method returns how many coins the player has:
-    int Player :: coins(){
+    int Player :: coins() const{
 
         return this->_coins;
     }
@@ -86,7 +84,7 @@ namespace coup{
     // The function updates the game that the player's turn is over:
     void Player :: endTurn(string action){
 
-        this->_lastAction = action;
+        this->_lastAction = move(action);
 
         this->_game->nextTurn();
     }
@@ -95,6 +93,17 @@ namespace coup{
     string Player :: getName(){
 
         return this->_name;
+    }
+
+    // The function adds coins to the player:
+    void Player :: addCoins(int num){
+
+        if ( (this->_coins + num) < 0 ){
+
+            throw runtime_error("The player does not have enough coins");
+        }
+
+        this->_coins += num;
     }
         
     // Destructor:

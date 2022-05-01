@@ -4,6 +4,8 @@
 
 using namespace std;
 
+const int SIX = 6;
+
 namespace coup{
 
     // Contruuctor:
@@ -21,13 +23,13 @@ namespace coup{
     // Print the name of the player whose turn to play now.
     string Game:: turn(){
 
-        if (this->_players.size() == 0){
+        if (this->_players.empty()){
 
             throw runtime_error("The game has no players");
 
         }
 
-        return (this->_players).at(this->_turn); 
+        return this->_players.at( (unsigned long) this->_turn); 
     }
         
     // The method returns the name of the winner. 
@@ -43,14 +45,14 @@ namespace coup{
     }
 
     // Add a new player to the game:
-    void Game :: addPlayer(string name){
+    void Game :: addPlayer(string const &name){
 
-        if (this->_players.size() >= 6){
+        if (this->_players.size() >= SIX){
 
             throw runtime_error("The game contains 6 players");
         }
 
-        for(string existName : this->_players ){
+        for(string const &existName : this->_players ){
 
             if (existName == name){
 
@@ -63,15 +65,17 @@ namespace coup{
     }
 
     // Remove a player from the game:
-    void Game :: removePlayer(string name){
+    void Game :: removePlayer(const string &name){
 
-        remove(this->_players.begin(), this->_players.end(), name);
+        vector<string>::iterator iter;
+        iter = remove(this->_players.begin(), this->_players.end(), name);
     }
 
     // The function advances the turn of the game:
     void Game :: nextTurn(){
 
-        this->_turn = (this->_turn + 1) % this->_players.size();
+        this->_turn += 1;
+        this->_turn %= this->_players.size();
     }
 
     // Destructor:

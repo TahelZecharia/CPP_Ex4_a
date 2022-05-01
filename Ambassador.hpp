@@ -9,13 +9,13 @@ namespace coup{
     public:
 
     // Contruuctor:  
-    Ambassador(Game &game, string name);
+    Ambassador(Game &game, const std::string &name);
 
     // The func transfer coin from one player to another player in addition.
-    void transfer(Player &p1, Player &p2);
+    void transfer(Player &player1, Player &player2);
     
     // The ambassador can prevent a theft.
-    void block(Player &p);
+    void block(Player &player);
     
     // Destructor:
     ~Ambassador();
